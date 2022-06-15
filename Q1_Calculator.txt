@@ -1,0 +1,56 @@
+#include <iostream> 
+#include <string>
+using namespace std;
+
+int main(int argc, char *argv[] )
+{
+    int i;
+    int op;
+    cout<< "\n\t\t\t***>>Calculator<<***"<<endl;
+    cout<< "Choose any operation\n\t1. Addition\n\t2. Substraction\n\t3. Multiplication\n\t4. Division"<<endl;
+
+    cout << "Enter Option Here: ";
+    cin >> op;
+
+    int sum=0, sub=0, mul=1, div=1;
+    for(i=1;i<argc;i++)
+    {
+                switch (op)
+                {
+                    case 1:
+                            sum = sum + atoi(argv[i]);       
+                            cout <<"Sum is : " << sum << endl;
+                        break;
+
+                        case 2:
+                            sub =atoi(argv[i]) - sub;
+                            cout <<"Subtraction is : " << sub << endl;
+                        break;
+
+                        case 3: 
+                            mul = mul * atoi(argv[i]);
+                            cout <<"Multiplication is : " << mul << endl;
+                        break;
+
+                        case 4: 
+                        // if(atoi(argv[i]) < atoi(argv[i+1]))
+                        // {
+                            cout <<"Division is Possible!! " << endl;
+                            if(atoi(argv[i]) != 0)
+                            {
+                                div = atoi(argv[i]) / div;
+                                cout <<"Division is : " << div << endl;
+                            }
+                            else
+                            {
+                                cout<<"Divide by 0 situation occured";
+                            }
+                       // }
+                        break;
+                        
+                        default:
+                            cout<<"Invalid Input";
+                          break;
+                }    
+    }
+}
