@@ -1,0 +1,58 @@
+#include <iostream> 
+#include <string>
+#include <fstream> 
+#include<vector>
+#include <math.h>
+using namespace std;
+
+int distance(int x, int y)  // distance calculation
+{
+    //int d = sqrt(pow(x - 0,2) + pow(y-0,2));
+     int d= pow((x-0),2) + pow((y-0),2);
+    int c = sqrt(d);
+    return c;
+}
+
+int main(int argc, char *argv[] )
+{
+    ifstream fs;
+    ofstream ft;
+    int i;
+    
+        fs.open(argv[1]); // argument 1
+        vector<pair<int,int>> v; // x,y
+
+        while(fs.eof()==0)
+        {
+            int x,y;
+            fs>>x>>y;
+            v.push_back({x,y});
+        }
+    
+    cout<<"Content copied and sorted successfully!!";
+    int dist;
+    vector<int>v1;
+    for(int i=0;i<v.size();i++)
+    {
+        
+        dist=distance(v[i].first,v[i].second);
+        v1.push_back(dist);
+    }
+
+    for(int i=0;i<v1.size() - 1;i++)
+    {
+        for(int j=i+1;j<v1.size();j++)
+        {
+            swap(v1[i],v1[j]);
+            swap(v[i],v[j]);
+        }
+    }
+    
+    ft.open(argv[2]); // Argument 2
+    for(int i=0;i<v1.size();i++)
+    {
+        ft<<"{"<<v[i].first<<","<<v[i].second<<"}   "<<v1[i]<<endl;
+    }
+    fs.close();
+    ft.close();
+}
